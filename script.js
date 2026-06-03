@@ -977,7 +977,8 @@ let userProgress = {
   lastActive: null,
   quizScores: {}, // topic -> { bestScore, attempts, totalXP }
 };
-initDarkMode();
+
+applySavedTheme();
 
 // ===== INITIALIZATION =====
 document.addEventListener("DOMContentLoaded", () => {
@@ -994,6 +995,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initGamification();
   initChatbot();
   initProfile();
+  initDarkMode();
   initScrollEffects();
 
   // Update profile display after loading
@@ -2455,8 +2457,19 @@ function initScrollEffects() {
 }
 
 // ===== DARK MODE =====
+
+function applySavedTheme() {
+  const savedMode = localStorage.getItem("darkMode");
+
+  if (savedMode === "light") {
+    document.body.classList.add("light-mode");
+  }
+}
+
+
 function initDarkMode() {
   const toggle = document.getElementById("darkModeToggle");
+  if (!toggle) return;
   const icon = toggle.querySelector("i");
 
   // Check saved preference
