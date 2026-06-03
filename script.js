@@ -977,6 +977,7 @@ let userProgress = {
   lastActive: null,
   quizScores: {}, // topic -> { bestScore, attempts, totalXP }
 };
+initDarkMode();
 
 // ===== INITIALIZATION =====
 document.addEventListener("DOMContentLoaded", () => {
@@ -994,7 +995,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initChatbot();
   initProfile();
   initScrollEffects();
-  initDarkMode();
 
   // Update profile display after loading
   updateProfile();
